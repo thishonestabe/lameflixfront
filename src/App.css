@@ -1,5 +1,5 @@
 body{
-  background-color: #bbbbbb;
+  background-color: #282c34 !important;
 }
 .App {
   text-align: center;
@@ -18,13 +18,13 @@ body{
 }
 
 
-.btn-primary {
+Button.botonPrimario{
   color: #282c34;
   background-color: #ffd369;
   border-color: #ffd369;
   transition: 0.3s;
 }
-.btn-primary:hover{
+Button.botonPrimario:hover{
   color: #282c34;
   background-color: #b39247;
   border-color: #b39247;

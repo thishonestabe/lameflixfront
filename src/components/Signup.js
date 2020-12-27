@@ -54,12 +54,12 @@ export default function Signup() {
                             <Form.Label>Password Confirmation</Form.Label>
                             <Form.Control type={"password"} ref={passwordConfirmRef} required/>
                         </Form.Group>
-                        <Button disabled={loading} className={"w-100"} type={"submit"}>Sign Up</Button>
+                        <Button disabled={loading} className={"w-100 botonPrimario"} type={"submit"}>Sign Up</Button>
                     </Form>
                 </Card.Body>
             </Card>
             <div className={"w-100 text-center mt-2"}>
-                <Link to={'/login'}>  Log In </Link>
+                <Link className={"text-center"} to={'/login'}>  Log In </Link>
             </div>
         </>
     )
