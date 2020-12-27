@@ -2,6 +2,8 @@ import React, {useRef, useState} from 'react'
 import {Card, Form, Button, Alert, Container} from 'react-bootstrap'
 import { useAuth } from "../contexts/AuthContext";
 import { Link, useHistory } from  'react-router-dom'
+import '../App.css'
+
 export default function Login() {
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -24,19 +26,18 @@ export default function Login() {
             setLoading(false);
         }
 
-
     }
     return (
         <>
-            <Container className={"d-flex align-content-center mt-5"}>
+            <Container>
                 <div className="w100" style={{maxWidth: '100vw'}}>
-                    <h1 className={"text-center mb-4"}>LAMEFLIX</h1>
-                <Card>
-                    <Card.Body>
-                        <h2 className={"text-center mb-4"}>Login</h2>
+                    <h1 className={"text-center mt-5"}>LAMEFLIX</h1>
+                <Card >
+                    <Card.Body className="cardBody">
+                        <h2 className={"text-center"}>Login</h2>
 
                         {error && <Alert variant={"danger"}>{error}</Alert>}
-                        <Form onSubmit={handleSubmit}>
+                        <Form className="form" onSubmit={handleSubmit}>
                             <Form.Group id={"email"}>
                                 <Form.Label>Email</Form.Label>
                                 <Form.Control type={"email"} ref={emailRef} required/>
@@ -50,8 +51,8 @@ export default function Login() {
                         </Form>
                     </Card.Body>
                 </Card>
-                <div className={"w-100 text-center mt-2"}>
-                    Need an Account? <Link to={'/signup'}>Signup</Link>
+                <div className={"text-center"}>
+                    Need an Account? <Link className={"text-center"} to={'/signup'}>Signup</Link>
                 </div>
                 </div>
             </Container>

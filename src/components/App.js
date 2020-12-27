@@ -10,6 +10,11 @@ import PrivateRoute from "./PrivateRoute";
 import MovieProvider from "../contexts/MovieContext";
 import RentedMovies from "./RentedMovies";
 
+
+import '../App.css';
+
+
+
 function App() {
   return (
 

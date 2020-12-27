@@ -2,6 +2,9 @@ import React, {useRef, useState} from 'react'
 import {Card, Form, Button, Alert} from 'react-bootstrap'
 import { useAuth } from "../contexts/AuthContext";
 import {Link, useHistory} from 'react-router-dom'
+
+import '../App.css'
+
 export default function Signup() {
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -34,7 +37,7 @@ export default function Signup() {
         <>
             <h1 className={"text-center mt-5"}>LAMEFLIX</h1>
             <Card >
-                <Card.Body>
+                <Card.Body className="cardBody">
                     <h2 className={"text-center mb-4"}>Sign Up</h2>
 
                     {error && <Alert variant={"danger"}>{error}</Alert>}
