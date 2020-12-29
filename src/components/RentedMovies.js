@@ -30,11 +30,12 @@ export default function Dashboard() {
 
        let rentedMoviesTable = rentedMovies.map((m, i) => {
             return (
-                <tr key={i}>
+                <tr  className='rentedMoviesHover'  key={i}>
                     <td>{m.id}</td>
                     <td>{m.title}</td>
                     <td>{m.rented}</td>
                     <td>{m.due}</td>
+                    <td><Button style={{backgroundColor: '#ffd369', color:'#393e46'}} variant="warning">Return</Button></td>
                 </tr>
             )
         })
@@ -46,13 +47,14 @@ export default function Dashboard() {
             <Navigation/>
             <Container className={'mt-5 text-center'}>
                 <h1 className={'mb-5'}>Rented Movies</h1>
-                <Table style={{color: '#ffd369'}} striped bordered hover>
+                <Table style={{color: '#ffd369'}}  striped bordered >
                     <thead>
                     <tr>
                         <th>#</th>
                         <th>Title</th>
                         <th>Day Rented</th>
                         <th>Due Date</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody style={{color: '#eeeeee'}}>

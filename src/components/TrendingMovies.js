@@ -33,8 +33,8 @@ export default function Dashboard() {
                                     <br/>
                                     Score: {m['vote_average']}
                                 </Card.Text>
-                                <Button variant="light" className={'mr-2'} onClick={() => handleShow(m.title, m.overview)}>Details</Button>
-                                <Button variant="warning" onClick={() => handleRent(m.id, m.title)}>Rent</Button>
+                                <Button style={{backgroundColor: '#eeeeee', color:'#393e46'}} variant="light" className={'mr-2'} onClick={() => handleShow(m.title, m.overview)}>Details</Button>
+                                <Button style={{backgroundColor: '#ffd369', color:'#393e46'}} variant="warning" onClick={() => handleRent(m.id, m.title)}>Rent</Button>
                             </Container>
 
                         </Card.Body>
@@ -60,7 +60,7 @@ export default function Dashboard() {
                 <Modal.Header closeButton>
                     <Modal.Title>{modalInfo.title}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>{modalInfo.description}</Modal.Body>
+                <Modal.Body style={{backgroundColor: '#222831'}}>{modalInfo.description}</Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
