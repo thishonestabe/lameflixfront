@@ -49,3 +49,7 @@ Button.botonPrimario:hover{
   color: #9ea3ac
 }
 
+.modal * {
+  background-color: #222831
+}
+

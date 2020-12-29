@@ -56,13 +56,13 @@ export default function Dashboard() {
 
             </Container>
 
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
+            <Modal show={show} onHide={handleClose} className='modal'>
+                <Modal.Header closeButton style={{color: '#ffd369'}}>
                     <Modal.Title>{modalInfo.title}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body style={{backgroundColor: '#222831'}}>{modalInfo.description}</Modal.Body>
+                <Modal.Body style={{color: '#eeeeee'}}>{modalInfo.description}</Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button style={{backgroundColor: '#393e46'}} variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
 
