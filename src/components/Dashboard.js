@@ -30,7 +30,7 @@ export default function Dashboard() {
                 <Navigation/>
 
                     <Card>
-                        <Card.Body>
+                        <Card.Body className="card-body">
                             <h2 className={"text-center mb-4"}>Welcome</h2>
 
                             {error && <Alert variant={"danger"}>{error}</Alert>}

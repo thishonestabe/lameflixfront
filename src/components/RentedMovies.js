@@ -46,7 +46,7 @@ export default function Dashboard() {
             <Navigation/>
             <Container className={'mt-5 text-center'}>
                 <h1 className={'mb-5'}>Rented Movies</h1>
-                <Table striped bordered hover>
+                <Table style={{color: '#ffd369'}} striped bordered hover>
                     <thead>
                     <tr>
                         <th>#</th>
@@ -55,7 +55,7 @@ export default function Dashboard() {
                         <th>Due Date</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody style={{color: '#eeeeee'}}>
                     {rentedMoviesTable}
                     </tbody>
                 </Table>

@@ -38,21 +38,21 @@ export default function Navigation() {
         <>
             <Navbar style={{width: '100vw'}} bg="dark">
                 <Navbar.Brand>
-                    <span ><Link style={{color: 'red'}} to={'/'}>LAMEFLIX</Link></span>
+                    <span ><Link style={{color: '#ffd369'}} to={'/'}>LAMEFLIX</Link></span>
                 </Navbar.Brand>
                 <Nav className={'mr-auto'}>
                     <Nav.Link >
-                        <Button variant={'link'} onClick={handleLogout}>Log Out</Button>
+                        <Button style={{color: '#eeeeee'}} variant={'link'} onClick={handleLogout}>Log Out</Button>
                     </Nav.Link>
                     <Nav.Link >
-                        <Button variant={'link'}><Link to={'/mymovies'}>My Movies</Link></Button>
+                        <Button variant={'link'}><Link style={{color: '#eeeeee'}} to={'/mymovies'}>My Movies</Link></Button>
                     </Nav.Link>
                 </Nav>
                 <Form inline>
                     <Form.Group id={"search"}>
                     <Form.Control type="text" ref={searchRef}  placeholder="Search" className="mr-sm-2" />
                     </Form.Group>
-                    <Button variant="outline-info" onClick={() => handleSearch(searchRef.current.value)}>Search</Button>
+                    <Button variant="outline-warning" onClick={() => handleSearch(searchRef.current.value)}>Search</Button>
                 </Form>
                 <Navbar.Collapse className="justify-content-end">
                     <Navbar.Text style={{color: 'white'}}>

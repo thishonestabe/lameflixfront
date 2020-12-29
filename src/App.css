@@ -12,6 +12,9 @@ body{
   background-color: #393e46;
   color: #eeeeee;
 }
+.card-body{
+  background-color: #393e46;
+}
 
 .text-center{
   color: #ffd369;
@@ -29,7 +32,6 @@ Button.botonPrimario:hover{
   background-color: #b39247;
   border-color: #b39247;
 }
-
 
 
 .App-header {

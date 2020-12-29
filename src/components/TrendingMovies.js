@@ -28,13 +28,13 @@ export default function Dashboard() {
                         <Card.Body>
                             <Container className={'align-items-center text-center'}>
                                 <Card.Title style={{textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden'}}>{m.title}</Card.Title>
-                                <Card.Text>
+                                <Card.Text style={{color: '#eeeeee'}} >
                                     Release Date: {m['release_date']}
                                     <br/>
                                     Score: {m['vote_average']}
                                 </Card.Text>
-                                <Button variant="primary" className={'mr-2'} onClick={() => handleShow(m.title, m.overview)}>Details</Button>
-                                <Button variant="danger" onClick={() => handleRent(m.id, m.title)}>Rent</Button>
+                                <Button variant="light" className={'mr-2'} onClick={() => handleShow(m.title, m.overview)}>Details</Button>
+                                <Button variant="warning" onClick={() => handleRent(m.id, m.title)}>Rent</Button>
                             </Container>
 
                         </Card.Body>
