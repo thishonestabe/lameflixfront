@@ -9,7 +9,7 @@ export default function Navigation() {
     const [error, setError] = useState('');
     const searchRef = useRef();
     const { currentUser, logout } = useAuth();
-    const { searchMovieTitle, getTrending } = useMovie();
+    const { searchMovieTitle, getTrending, searchMovieGenre } = useMovie();
     const history = useHistory();
     async function handleLogout() {
         setError('')

@@ -9,6 +9,11 @@ import TrendingMovies from './TrendingMovies'
 export default function Dashboard() {
     const [error, setError] = useState('');
     const { currentUser, logout } = useAuth();
+    
+    const horrorMovie = 'https://api.themoviedb.org/3/discover/movie?api_key=acb1f7cc631280f76384d486fc592d60&with_genres=27'
+    const actionMovie = 'https://api.themoviedb.org/3/discover/movie?api_key=acb1f7cc631280f76384d486fc592d60&with_genres=28' 
+    const dramaMovie = 'https://api.themoviedb.org/3/discover/movie?api_key=acb1f7cc631280f76384d486fc592d60&with_genres=18' 
+    const fanatsyMovie = 'https://api.themoviedb.org/3/discover/movie?api_key=acb1f7cc631280f76384d486fc592d60&with_genres=14' 
 
 
     const history = useHistory();
@@ -29,7 +34,6 @@ export default function Dashboard() {
 
                 <Navigation/>
                 <br/>
-                <h2 className={"text-center mb-4"}>Trending Movies</h2>
                 <TrendingMovies />
 
 

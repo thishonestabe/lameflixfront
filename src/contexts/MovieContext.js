@@ -14,7 +14,7 @@ export default function MovieProvider({children}) {
     const [currentPage, setCurrentPage] = useState(1);
     const [loading, setLoading] = useState(true)
     function getTrending() {
-        axios.get(`https://api.themoviedb.org/3/trending/movie/week?api_key=acb1f7cc631280f76384d486fc592d60`)
+        axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=acb1f7cc631280f76384d486fc592d60`)
             .then(res => {
                 setTrendingMovies(res.data.results)
                 setLoading(false)
@@ -27,6 +27,7 @@ export default function MovieProvider({children}) {
                 setLoading(false)
             })
     }
+  
     async function getRentals() {
         let userId = auth.currentUser.uid
         const rentalRef = db.collection('rentals').doc(userId);

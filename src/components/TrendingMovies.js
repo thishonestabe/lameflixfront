@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Card, Button, Alert, Container, Row, Col, Modal} from 'react-bootstrap';
+import {Card, Button, Alert, Container, Row, Col, Modal, Carousel} from 'react-bootstrap';
 import MovieProvider, {useMovie} from "../contexts/MovieContext";
 import axios from "axios";
 
@@ -49,12 +49,13 @@ export default function Dashboard() {
     return (
         <>
 
-            <Container fluid>
-                <Row>
-                    {movieCards}
-                </Row>
-
-            </Container>
+            <Carousel>
+                <Carousel.Item interval={1000}>
+                    <h3>Trending Movies</h3>
+                {movieCards}
+                </Carousel.Item>
+            </Carousel>
+         
 
             <Modal show={show} onHide={handleClose} className='modal'>
                 <Modal.Header closeButton style={{color: '#ffd369'}}>
