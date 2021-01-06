@@ -10,6 +10,9 @@ export function useMovie() {
 
 export default function MovieProvider({children}) {
     const [trendingMovies, setTrendingMovies] = useState([]);
+    const [dramaMovies, setDramaMovies] = useState([]);
+    const [actionMovies, setActionMovies] = useState([]);
+    const [comedyMovies, setComedyMovies] = useState([]);
     const [rentals, setRentals] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [loading, setLoading] = useState(true)
@@ -20,6 +23,14 @@ export default function MovieProvider({children}) {
                 setLoading(false)
             })
     }
+
+        function getDrama() {
+            axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=acb1f7cc631280f76384d486fc592d60&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=18`)
+                .then(res => {
+                    setDramaMovies(res.data.results)
+                    setLoading(false)
+                })
+        }
     function searchMovieTitle(title) {
         axios.get(`https://api.themoviedb.org/3/search/movie?api_key=acb1f7cc631280f76384d486fc592d60&language=en-US&query=${title}&page=1&include_adult=false`)
             .then(res => {
@@ -85,7 +96,28 @@ export default function MovieProvider({children}) {
                 setTrendingMovies(res.data.results)
                 setLoading(false)
 
+            });
+        axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=acb1f7cc631280f76384d486fc592d60&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=18`)
+            .then(res => {
+
+                setDramaMovies(res.data.results)
+
             })
+        axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=acb1f7cc631280f76384d486fc592d60&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=28`)
+            .then(res => {
+
+                setActionMovies(res.data.results)
+
+            })
+        axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=acb1f7cc631280f76384d486fc592d60&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=35`)
+            .then(res => {
+
+                setComedyMovies(res.data.results)
+
+            })
+
+
+
     }, [])
 
 
@@ -97,6 +129,10 @@ export default function MovieProvider({children}) {
         rentMovie,
         getRentals,
         rentals,
+        getDrama,
+        dramaMovies,
+        actionMovies,
+        comedyMovies
 
     }
     return (
