@@ -1,8 +1,10 @@
 import React, {useContext, useState, useEffect} from 'react';
 import axios from 'axios';
 import 'firebase/firestore';
+import { useAuth } from './AuthContext'
 import app, {auth}  from '../firebase'
 const MovieContext = React.createContext();
+
 const db = app.firestore()
 export function useMovie() {
     return useContext(MovieContext)
@@ -16,6 +18,7 @@ export default function MovieProvider({children}) {
     const [rentals, setRentals] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [loading, setLoading] = useState(true)
+    const { currentUser } = useAuth();
     function getTrending() {
         axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=acb1f7cc631280f76384d486fc592d60`)
             .then(res => {
@@ -40,55 +43,55 @@ export default function MovieProvider({children}) {
     }
   
     async function getRentals() {
-        let userId = auth.currentUser.uid
-        const rentalRef = db.collection('rentals').doc(userId);
-        const doc = await rentalRef.get();
+        let token = currentUser.access_token;
 
 
+        return axios.get(`http://localhost:8000/api/v1/rental/getrentals`, {
+            headers: {
+                Authorization: 'Bearer ' + token //the token is a variable which holds the token
+            }
+        })
 
-        return doc.data()
+    }
+
+    async function returnMovie(id) {
+        let token = currentUser.access_token;
+
+        const params = new URLSearchParams()
+        params.append('id', id)
+
+        return axios.post(`http://localhost:8000/api/v1/rental/return`,params, {
+            headers: {
+                Authorization: 'Bearer ' + token //the token is a variable which holds the token
+            }
+        })
+
     }
     async function rentMovie(id ,title) {
-        let userId = auth.currentUser.uid
-        let duedate = new Date();
-        let renteddate = new Date();
-        renteddate = renteddate.toString();
-        duedate.setDate((duedate.getDate() + 7))
-        duedate = duedate.toString()
-        console.log(duedate)
-        const rentalRef = db.collection('rentals').doc(userId);
-        const doc = await rentalRef.get();
-        if (!doc.exists) {
-            return db.collection('rentals').doc(userId).set(
-                {
-                    rentals: [
-                        {
-                            id,
-                            title,
-                            rented: renteddate,
-                            due: duedate
-                        }
-                    ]
 
-                })
-        } else {
-            return db.collection('rentals').doc(userId).set(
-                {
-                    rentals: [ ...doc.data().rentals,
-                        {
-                            id,
-                            title,
-                            rented: renteddate,
-                            due: duedate
-                        }
-                    ]
+        let token = currentUser.access_token;
 
-                })
-        }
+        const params = new URLSearchParams()
+        params.append('movieId', id)
+        params.append('title', title)
+
+
+
+        return axios.post(`http://localhost:8000/api/v1/rental/create`, params ,{
+            headers: {
+                Authorization: 'Bearer ' + token //the token is a variable which holds the token
+            }
+        }).then(res => {
+            console.log("rent movie");
+            console.log(res)
+        })
+
 
     }
 
     useEffect(()=> {
+
+
 
         axios.get(`https://api.themoviedb.org/3/trending/movie/week?api_key=acb1f7cc631280f76384d486fc592d60`)
             .then(res => {
@@ -132,7 +135,8 @@ export default function MovieProvider({children}) {
         getDrama,
         dramaMovies,
         actionMovies,
-        comedyMovies
+        comedyMovies,
+        returnMovie
 
     }
     return (

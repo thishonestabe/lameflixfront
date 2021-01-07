@@ -7,22 +7,36 @@ import axios from "axios";
 
 export default function Dashboard() {
     const [error, setError] = useState('');
-    const { getRentals, rentals } = useMovie();
+    const { getRentals, rentals, returnMovie } = useMovie();
     const [rentedMovies, setRentedMovies] = useState([]);
     //let rentedMovies = []
-    useEffect(()=> {
+    const handleRenturn = (id) => {
+        returnMovie(id);
+        alert(`movie with id: ${id}, deleted`)
         getRentals().then(o => {
+            console.log("oooooooo");
+            console.log(o)
             if (!o) {
                 return
             }
-            console.log(o.rentals)
-            //rentedMovies = o.rentals;
-            // let a = o.rentals.map(obj => {
-            //     obj.due = obj.due.toDateString()
-            //     obj.rented = obj.rented.toDateString()
-            //     return
-            // })
-            setRentedMovies(o.rentals)
+
+
+            setRentedMovies(o.data.rentals)
+            console.log(rentedMovies)
+        })
+    }
+    useEffect( ()=> {
+
+
+        getRentals().then(o => {
+            console.log("oooooooo");
+            console.log(o)
+            if (!o) {
+                return
+            }
+
+
+            setRentedMovies(o.data.rentals)
             console.log(rentedMovies)
         })
     }, [])
@@ -33,9 +47,9 @@ export default function Dashboard() {
                 <tr  className='rentedMoviesHover'  key={i}>
                     <td>{m.id}</td>
                     <td>{m.title}</td>
-                    <td>{m.rented}</td>
-                    <td>{m.due}</td>
-                    <td><Button style={{backgroundColor: '#ffd369', color:'#393e46'}} variant="warning">Return</Button></td>
+                    <td>{m['rent_date']}</td>
+                    <td>{m['return_date']}</td>
+                    <td><Button style={{backgroundColor: '#ffd369', color:'#393e46'}} variant="warning" onClick={() => handleRenturn(m.id)}>Return</Button></td>
                 </tr>
             )
         })

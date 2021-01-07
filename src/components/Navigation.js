@@ -56,7 +56,7 @@ export default function Navigation() {
                 </Form>
                 <Navbar.Collapse className="justify-content-end">
                     <Navbar.Text style={{color: 'white'}}>
-                        Signed in as: {currentUser && currentUser.hasOwnProperty('email') && currentUser.email }
+                        Signed in as: {currentUser && currentUser.hasOwnProperty('user') && currentUser.user.name }
                     </Navbar.Text>
                 </Navbar.Collapse>
             </Navbar>
